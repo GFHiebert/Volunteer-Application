@@ -42,7 +42,7 @@ body {
     #headers{
       color:#008ed6
     }
-    .search{
+    .new-search{
       padding: 6px;
       border: none;
       margin-top: 8px;
@@ -51,7 +51,9 @@ body {
       border-radius: 20px;
       
     }
-  
+  span{
+    color:black;
+  }
 
 
 

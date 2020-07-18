@@ -35,20 +35,22 @@ $(document).ready(() => {
 });
 
 function createNewRow(opp) {
-  let $newInputRow = $(
+  const $newInputRow = $(
     [
       "<li class='list-group-item new-item'>",
       "<span>",
-      opp.text,
+      "<h5>",
+      opp.event_name,
+      "</h5>",
+      opp.address,
       "</span>",
-      "<input type='text' class='edit' style='display: none;'>",
+      
       "</li>"
     ].join("")
   );
 
-  $newInputRow.find("button.delete").data("id", opp.id);
-  $newInputRow.find("input.edit").css("display", "none");
-  $newInputRow.data("event", opp);
+
+  $newInputRow.data("events", opp);
 
   return $newInputRow;
 }
