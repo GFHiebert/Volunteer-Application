@@ -14,7 +14,7 @@ $(document).ready(() => {
   // Our initial todos array
   let opp = [];
 
-  search();
+ 
   // Getting todos from database when page loads
   
   searchForm.on("click", event => {
@@ -28,13 +28,14 @@ $(document).ready(() => {
   });
 
   function search(searchQuery) {
-    $.post("/api/search", {
+    $.post("/api/event", {
       query: searchQuery
     })
       .then(() => {
-        window.location.replace("/search");
+        window.location.replace("/api/event");
       })
       .catch(searchErr);
+      search();
   }
 
   function searchErr(err) {
@@ -58,7 +59,7 @@ $(document).ready(() => {
   }
 
   function getEvents() {
-    $.get("/api/search", data => {
+    $.get("/api/event", data => {
       opp = data;
       console.log(opp);
       initializeRows();
@@ -94,8 +95,7 @@ function createNewRow(opp) {
     ].join("")
   );
 
-  $newInputRow.find("button.delete").data("id", opp.id);
-  $newInputRow.find("input.edit").css("display", "none");
+  
   $newInputRow.data("event", opp);
 
   return $newInputRow;
